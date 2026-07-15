@@ -27,8 +27,8 @@
 > **Pikachu（定制版）** 是基于经典 Pikachu 漏洞靶场二次优化的**增强版本**，不是原始版。
 >
 > ✅ 原版所有漏洞完整保留  
-> ✅ 新增 **Windows 一键启动脚本**（双击即用，无需手动配置环境）  
-> ✅ 新增 **Docker Compose 支持**（一行命令启动）  
+> ✅ 提供 **Docker Compose 支持**（一行命令启动，无需配环境）  
+> ✅ 提供 **Windows 一键启动脚本**（已装 PHPStudy 的用户双击即用）  
 > ✅ 优化数据库配置，首次访问自动引导安装
 
 如果你刚开始学 Web 安全、准备渗透测试面试、或者需要一个稳定的漏洞练习环境，这个项目就是为你准备的。
@@ -39,10 +39,10 @@
 
 | 特性 | 本版（定制版） | 原版 |
 |------|:-----------:|:---:|
-| 🪟 Windows 一键启动（双击 .bat） | ✅ **开箱即用** | ❌ 需手动配环境 |
-| 🐳 Docker Compose 支持 | ✅ **一行命令启动** | ❌ 无 |
-| 🖱️ 启动无需打开 PHPStudy | ✅ 双击 .bat 即可 | ❌ 每次需手动操作面板 |
-| 🔧 懒人优化配置 | ✅ 数据库预配置 | ❌ 需手动改 config |
+| 🐳 Docker 一行命令启动 | ✅ **支持** | ❌ 无 |
+| 🪟 Windows 双击 .bat 启动 | ✅ **支持**（需先装 PHPStudy） | ❌ 需手动配环境 |
+| 🖱️ 启动无需打开 PHPStudy 面板 | ✅ 双击 .bat 即可 | ❌ 每次需手动操作面板 |
+| 🔧 数据库首次访问自动初始化 | ✅ 自动引导安装 | ❌ 需手动改 config + 导 SQL |
 | 🆓 完全免费开源 | ✅ MIT 协议 | ✅ 同 |
 
 ---
@@ -74,36 +74,41 @@
 
 ## 🚀 快速启动
 
-> 💡 **目标：下载即用，无需繁琐配置。** 以下 3 种方式任选其一。
+> 💡 以下 3 种方式，根据你的情况选一种即可。**前提条件各不相同，选最适合你的。**
 
 ---
 
-### ⭐ 推荐：Docker（真正的开箱即用）
-
-**只需两步，3 分钟搞定：**
+### ⭐ 推荐：Docker（前提：需先装 Docker）
 
 ```bash
 # 1️⃣ 下载
 git clone https://github.com/TrueFurina/pikachu.git
 cd pikachu
 
-# 2️⃣ 启动（首次会自动拉取镜像，之后秒开）
+# 2️⃣ 启动（首次自动拉取镜像，之后秒开）
 docker compose up -d
 ```
 
 浏览器访问 **http://127.0.0.1/pikachu/** → 点击"初始化安装" → 🎯 开练！
 
-> ✅ 不需要安装 PHP、MySQL、Apache  
-> ✅ 任何系统都能用（Windows / Mac / Linux）  
-> ✅ 不会影响你电脑上已有的环境  
-> ❌ 前提：需要先安装 [Docker Desktop](https://www.docker.com/products/docker-desktop/)（约 5 分钟）
+| 前提条件 | 说明 |
+|---------|------|
+| ✅ 需要安装 Docker | 下载 [Docker Desktop](https://www.docker.com/products/docker-desktop/)（约 5 分钟装好） |
+| ✅ 安装后无需再装 PHP/MySQL/Apache | 镜像自带完整环境 |
+| ✅ 任何系统通用 | Windows / Mac / Linux 都行 |
 
 ---
 
 ### 🪟 Windows 已装 PHPStudy 的用户：双击 .bat 一键启动
 
-> **启动靶场不需要打开 PHPStudy 面板！** 脚本直接调用 Apache + MySQL 引擎，双击即用。
-> *（前提：已安装 PHPStudy，后续每次启动只需双击 .bat，无需再开面板）*
+> **前提：已安装 PHPStudy，且安装在 D 盘。** 如果装在其他盘，需要手动改一下脚本路径。
+
+| 前提条件 | 说明 |
+|---------|------|
+| ✅ 需要安装 PHPStudy | 下载 [phpstudy.net](https://www.xp.cn/download.html)（约 5 分钟装好） |
+| ✅ 需要把本项目放到 `WWW` 目录 | 见下方第一步 |
+| ✅ 装好后**不需要打开 PHPStudy 面板** | 脚本直接调用引擎，双击即用 |
+| ✅ **后续每次启动**只需双击 .bat | 无需再开面板 |
 
 | 脚本 | 功能 |
 |------|------|
@@ -111,10 +116,11 @@ docker compose up -d
 | `stop_pikachu.bat` 🛑 | **安全关闭** — 自动关闭 MySQL 和 Apache |
 
 ```batch
-① 双击 start_pikachu.bat
-② 脚本自动启动 Apache + MySQL
-③ 浏览器自动打开 → http://127.0.0.1/pikachu/
-④ 首次访问 → 点击"初始化安装" → 开练！🎯
+① 第一次：把 pikachu 文件夹放到 D:\phpstudy_pro\WWW\
+② 以后每次：双击 start_pikachu.bat
+③ 脚本自动启动 Apache + MySQL
+④ 浏览器自动打开 → http://127.0.0.1/pikachu/
+⑤ 首次访问 → 点击"初始化安装" → 开练！🎯
 ```
 
 > ⚠️ 如果你的 PHPStudy 安装在**非 D 盘**，右键编辑 `start_pikachu.bat`，把第 12 行 `PHPSTUDY_ROOT` 改成你的实际路径。
