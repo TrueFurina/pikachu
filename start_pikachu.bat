@@ -111,4 +111,4 @@ if %MYSQL_OK%==1 if %APACHE_OK%==1 (
 
 echo.
 echo ⏺ 按任意键退出本窗口（服务将继续在后台运行）
-pause >nul
+pause >nul
