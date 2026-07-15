@@ -1,0 +1,10 @@
+version: '3'
+services:
+  pikachu:
+    build: .
+    container_name: pikachu
+    ports:
+      - "80:80"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    restart: unless-stopped
