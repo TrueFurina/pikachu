@@ -72,6 +72,68 @@
 
 ---
 
+## 👶 新手小白从零开始配置指南
+
+> 如果你是第一次接触靶场，连 PHPStudy 是什么都不知道，**按下面 6 步走，15 分钟搞定**。
+
+### 📦 第一步：下载安装 PHPStudy
+
+PHPStudy 是一个集成了 Apache、MySQL、PHP 的集成环境，我们用它来运行靶场。
+
+1. 打开浏览器，访问 https://www.xp.cn/download.html
+2. 下载 **Windows 版**（选择推荐版本，约 200MB）
+3. 双击安装包安装，安装路径选择 **`D:\phpstudy_pro`**（默认即可）
+4. 安装完成后**不需要打开** PHPStudy 面板，直接关掉它
+
+> ✅ 安装后，`D:\phpstudy_pro\Extensions\` 目录下就会有 Apache 和 MySQL 了
+
+### 📥 第二步：下载本项目
+
+**方式 A：下载 ZIP（推荐新手）**
+
+1. 打开 https://github.com/TrueFurina/pikachu
+2. 点击绿色按钮 **「Code」→「Download ZIP」**
+3. 解压 ZIP，把里面的 `pikachu` 文件夹复制到 `D:\phpstudy_pro\WWW\`
+
+**方式 B：使用 Git（有基础的用户）**
+
+```bash
+git clone https://github.com/TrueFurina/pikachu.git
+```
+然后把 `pikachu` 文件夹放到 `D:\phpstudy_pro\WWW\`
+
+### 🚀 第三步：一键启动靶场
+
+1. 进入 `D:\phpstudy_pro\WWW\pikachu\` 文件夹
+2. **双击** `start_pikachu.bat`
+3. 会弹出一个黑色命令行窗口，自动启动 Apache 和 MySQL
+4. 看到 **「✅ 启动完成」** 就说明成功了
+
+> 💡 如果弹出错误，确认一下你的 PHPStudy 是否安装在 D 盘。
+> 如果不是，右键编辑 `start_pikachu.bat`，把第 12 行的 `D:\phpstudy_pro` 改成你的实际路径。
+
+### 🌐 第四步：初始化数据库
+
+1. 打开浏览器，访问 **http://127.0.0.1/pikachu/**
+2. 页面会提示 **"数据库连接失败，是否初始化安装？"**
+3. 点击 **「初始化安装」** 或 **「安装/初始化」** 按钮
+4. 等待几秒，显示 **「安装成功」** 即可
+
+### 🎯 第五步：开始练习
+
+回到首页 http://127.0.0.1/pikachu/，你会看到 16 种漏洞的导航菜单：
+- 点击任意漏洞即可开始练习
+- 页面右上角 **「提示」** 按钮会告诉你这个漏洞怎么利用
+- 配合 **Burp Suite** 等工具效果更佳
+
+### 🛑 第六步：用完怎么关闭
+
+- 双击 `stop_pikachu.bat` 即可安全关闭 Apache 和 MySQL
+- 或者直接关掉黑色命令行窗口也行
+- **下次再用**：双击 `start_pikachu.bat` 就行了，不用重复前面的步骤
+
+---
+
 ## 🚀 快速启动
 
 ### 🪟 Windows 用户：双击一键启动（最简单）
