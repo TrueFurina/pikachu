@@ -1,31 +1,57 @@
 <div align="center">
-  <h1>⚡ Pikachu 漏洞靶场</h1>
+  <h1>⚡ Pikachu 漏洞靶场 <sup>定制版</sup></h1>
   <p>
-    <strong>一个包含常见 Web 安全漏洞的渗透测试练习平台</strong>
+    <strong>开箱即用 · 一键启动 · 覆盖 16+ 常见 Web 漏洞</strong>
   </p>
   <p>
+    <a href="https://github.com/TrueFurina/pikachu"><img src="https://img.shields.io/github/stars/TrueFurina/pikachu?style=flat&logo=github&label=Stars" alt="GitHub Stars"/></a>
+    <a href="https://github.com/TrueFurina/pikachu"><img src="https://img.shields.io/github/forks/TrueFurina/pikachu?style=flat&logo=github&label=Forks" alt="GitHub Forks"/></a>
     <img src="https://img.shields.io/badge/PHP-7.4-blue?logo=php" alt="PHP"/>
     <img src="https://img.shields.io/badge/MySQL-5.7-blue?logo=mysql" alt="MySQL"/>
     <img src="https://img.shields.io/badge/Docker-支持-brightgreen?logo=docker" alt="Docker"/>
+    <img src="https://img.shields.io/badge/Windows-一键启动-yellow?logo=windows" alt="Windows"/>
     <img src="https://img.shields.io/badge/license-MIT-green" alt="License"/>
+  </p>
+  <p>
+    <a href="#-快速启动"><b>🚀 快速启动</b></a> •
+    <a href="#-包含的漏洞"><b>📋 漏洞列表</b></a> •
+    <a href="#-目录结构"><b>📁 目录结构</b></a> •
+    <a href="#-学习资源"><b>📚 学习资源</b></a>
   </p>
 </div>
 
 ---
 
-## 📖 简介
+## 👋 这是什么？
 
-> "如果你想搞懂一个漏洞，比较好的方法是：你可以自己先制造出这个漏洞（用代码编写），然后再利用它，最后再修复它。"
+> **Pikachu（定制版）** 是基于经典 Pikachu 漏洞靶场二次优化的**增强版本**，不是原始版。
+>
+> ✅ 原版所有漏洞完整保留  
+> ✅ 新增 **Windows 一键启动脚本**（双击即用，无需手动配置环境）  
+> ✅ 新增 **Docker Compose 支持**（一行命令启动）  
+> ✅ 优化数据库配置，首次访问自动引导安装
 
-**Pikachu** 是一个带有漏洞的 Web 应用系统，包含了常见的 Web 安全漏洞，适合 Web 渗透测试初学者进行练习。
+如果你刚开始学 Web 安全、准备渗透测试面试、或者需要一个稳定的漏洞练习环境，这个项目就是为你准备的。
 
 ---
 
-## 🧩 包含的漏洞类型
+## ✨ 为什么选择这个版本？
+
+| 特性 | 本版（定制版） | 原版 |
+|------|:-----------:|:---:|
+| 🪟 Windows 一键启动（双击 .bat） | ✅ **开箱即用** | ❌ 需手动配环境 |
+| 🐳 Docker Compose 支持 | ✅ **一行命令启动** | ❌ 无 |
+| 🖱️ 无需安装 PHPStudy 面板 | ✅ 脚本直接调用引擎 | ❌ 需手动操作面板 |
+| 🔧 懒人优化配置 | ✅ 数据库预配置 | ❌ 需手动改 config |
+| 🆓 完全免费开源 | ✅ MIT 协议 | ✅ 同 |
+
+---
+
+## 🧩 包含的漏洞
 
 | 漏洞类型 | 说明 | 难度 |
-|---------|------|------|
-| 🔓 **暴力破解** (Burte Force) | 登录接口暴力破解测试 | ⭐ |
+|---------|------|:---:|
+| 🔓 **暴力破解** (Brute Force) | 登录接口暴力破解测试 | ⭐ |
 | 🐚 **XSS 跨站脚本** | 反射型、存储型、DOM 型 | ⭐⭐ |
 | 🔗 **CSRF 跨站请求伪造** | GET/POST 型 CSRF | ⭐⭐ |
 | 💉 **SQL 注入** | 数字型、字符型、搜索型、POST 注入等 | ⭐⭐ |
@@ -42,67 +68,59 @@
 | 🌐 **SSRF** | 服务端请求伪造 | ⭐⭐⭐ |
 | 🛠️ **管理工具** | XSS 管理后台（钓鱼/捞 Cookie/键盘记录） | ⭐⭐ |
 
-> 💡 每个漏洞都设计了不同的子场景，点击页面右上角 **"提示"** 可查看帮助信息。
+> 💡 每个漏洞都有不同子场景，页面右上角 **"提示"** 可查看帮助。
 
 ---
 
 ## 🚀 快速启动
 
-### ⭐ 推荐：Docker Compose（最快）
+### 🪟 Windows 用户：双击一键启动（最简单）
 
-```bash
-# 克隆仓库
-git clone https://github.com/<你的用户名>/<仓库名>.git
-cd pikachu
-
-# 一键启动
-docker compose up -d
-
-# 访问靶场
-# 首次访问自动跳转安装页面 → 点击"初始化安装"即可
-```
-
-> 打开浏览器访问 **http://127.0.0.1/pikachu/**
-
-### 🐳 Docker 命令行
-
-```bash
-# 使用已有镜像
-docker run -d -p 8765:80 8023/pikachu-expect:latest
-
-# 或本地构建
-docker build -t pikachu .
-docker run -d -p 8080:80 pikachu
-```
-
-### 🪟 PHPStudy / XAMPP（Windows）
-
-#### 方式 A：一键启动（推荐 PHPStudy 用户）
-
-本仓库自带 **批处理脚本**，双击即可一键启动靶场，无需手动操作：
+> **不需要安装 PHPStudy 面板！** 脚本直接调用 Apache + MySQL 引擎，双击即用。
 
 | 脚本 | 功能 |
 |------|------|
-| `start_pikachu.bat` 🚀 | **一键启动** — 自动检测并启动 MySQL + Apache，打开浏览器访问靶场 |
-| `stop_pikachu.bat` 🛑 | **安全关闭** — 自动关闭 MySQL 和 Apache 服务 |
+| `start_pikachu.bat` 🚀 | **一键启动** — 自动检测并启动 MySQL、Apache，打开浏览器进入靶场 |
+| `stop_pikachu.bat` 🛑 | **安全关闭** — 自动关闭 MySQL 和 Apache |
 
-**启动流程（`start_pikachu.bat`）：**
-```
-① 检查 MySQL 是否运行 → 未运行则自动启动
-② 检查 Apache 是否运行 → 未运行则自动启动
-③ 等待 5 秒服务就绪
-④ 显示服务状态（运行中/未启动）
-⑤ 自动打开浏览器进入 http://127.0.0.1/pikachu/
+```batch
+① 双击 start_pikachu.bat
+② 脚本自动启动 Apache + MySQL
+③ 浏览器自动打开 → http://127.0.0.1/pikachu/
+④ 首次访问 → 点击"初始化安装" → 开练！🎯
 ```
 
-> ⚠️ 注意：脚本路径写死了 `D:\phpstudy_pro`，如果你的 PHPStudy 装在其他位置，需要手动修改脚本中的 `PHPSTUDY_ROOT` 路径。
+> ⚠️ 如果你的 PHPStudy 安装在**非 D 盘**，右键编辑 `start_pikachu.bat`，把第 12 行 `PHPSTUDY_ROOT` 改成你的实际路径即可。
 
-#### 方式 B：手动搭建
+### 🐳 Docker 用户：一行命令
 
-1. 将 `pikachu` 文件夹放到 Web 根目录
-2. 修改 `inc/config.inc.php` 中的数据库连接配置
+```bash
+# 方式一：Docker Compose（推荐）
+cd pikachu
+docker compose up -d
+
+# 方式二：直接运行
+docker run -d -p 8765:80 8023/pikachu-expect:latest
+```
+
+浏览器访问 **http://127.0.0.1/pikachu/**
+
+### 🔧 手动搭建（PHPStudy / XAMPP / LNMP）
+
+1. 把 `pikachu` 文件夹放到 Web 根目录
+2. 修改 `inc/config.inc.php` 中的数据库连接信息
 3. 导入数据库：`mysql -u root -p < pikachu.sql`
 4. 访问 `http://127.0.0.1/pikachu/` → 点击"初始化安装"
+
+---
+
+## 📸 截图
+
+> *（欢迎 PR 贡献截图！）*
+
+| 首页 | 漏洞列表 | SQL 注入 |
+|:---:|:-------:|:--------:|
+| 首页概览 | 16 种漏洞导航 | SQL 注入练习页 |
 
 ---
 
@@ -110,24 +128,22 @@ docker run -d -p 8080:80 pikachu
 
 ```
 pikachu/
-├── inc/                    # 核心配置文件
+├── inc/                    # 核心配置（数据库、函数）
 │   ├── config.inc.php      # 数据库连接配置
 │   ├── function.php        # 公共函数
 │   └── uploadfunction.php  # 文件上传处理
-├── vul/                    # 漏洞模块（核心）
-├── pkxss/                  # XSS 管理后台
+├── vul/                    # 🎯 漏洞模块（核心目录）
+├── pkxss/                  # XSS 管理后台（钓鱼/捞 Cookie）
 ├── assets/                 # 静态资源（CSS/JS/图片）
 ├── test/                   # 测试工具
 ├── wiki/                   # Wiki 文档
 ├── install.php             # 数据库初始化安装
 ├── index.php               # 首页入口
-├── header.php              # 公共头部
-├── footer.php              # 公共底部
-├── pikachu.sql             # 数据库备份文件
-├── Dockerfile              # Docker 构建文件
-├── docker-compose.yml      # Docker Compose 配置
-├── start_pikachu.bat       # 启动脚本（PHPStudy）
-└── stop_pikachu.bat        # 停止脚本（PHPStudy）
+├── pikachu.sql             # 数据库备份
+├── Dockerfile              # Docker 构建
+├── docker-compose.yml      # Docker Compose
+├── start_pikachu.bat       # 🚀 Windows 一键启动
+└── stop_pikachu.bat        # 🛑 Windows 一键关闭
 ```
 
 ---
@@ -135,19 +151,29 @@ pikachu/
 ## 🛠️ 环境要求
 
 | 依赖 | 版本 | 说明 |
-|------|------|------|
+|------|:---:|------|
 | PHP | 7.0+ | 推荐 7.4 |
 | MySQL | 5.6+ | 推荐 5.7 |
-| Web 服务器 | Apache / Nginx | 支持 URL 重写即可 |
+| Web 服务器 | Apache / Nginx | 支持 URL 重写 |
 | Docker | 20.10+ | 仅 Docker 方式需要 |
 
 ---
 
 ## 📚 学习资源
 
-- [SEED Labs 网络安全实验](https://github.com/seed-labs/seed-labs) — 更系统的网络安全实验集合
+- [SEED Labs 网络安全实验](https://github.com/seed-labs/seed-labs) — 系统化的网络安全实验
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/) — OWASP 十大 Web 安全风险
-- [PortSwigger Web Security Academy](https://portswigger.net/web-security) — 在线 Web 安全练习
+- [PortSwigger Web Security Academy](https://portswigger.net/web-security) — 在线交互式 Web 安全练习
+- [Burp Suite 官方文档](https://portswigger.net/burp/documentation) — 渗透测试神器使用指南
+
+---
+
+## 🤝 如何贡献
+
+- ⭐ **点个 Star** — 让更多人发现这个项目
+- 🐛 **提 Issue** — 发现问题或建议
+- 📝 **提 PR** — 修复 bug、增加漏洞场景、完善文档
+- 💬 **分享给同学** — 一起练渗透
 
 ---
 
@@ -161,12 +187,17 @@ pikachu/
 
 ## 📄 许可证
 
-本项目基于 MIT 许可证开源，详情请查看 [LICENSE](LICENSE) 文件。
+本项目基于 **MIT 许可证** 开源，详见 [LICENSE](LICENSE) 文件。
 
 ---
 
 <div align="center">
-  <sub>⭐ 如果这个项目对你有帮助，欢迎 Star 支持！</sub>
   <br/>
+  <a href="https://github.com/TrueFurina/pikachu">
+    <img src="https://img.shields.io/github/stars/TrueFurina/pikachu?style=for-the-badge&logo=github&label=⭐ 给个 Star 支持一下" alt="Star"/>
+  </a>
+  <br/><br/>
   <sub>Built with ❤️ for the security community</sub>
+  <br/>
+  <sub>Pikachu 定制版 — 不是原版，胜在开箱即用 🚀</sub>
 </div>
