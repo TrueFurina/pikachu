@@ -77,13 +77,32 @@ docker run -d -p 8080:80 pikachu
 
 ### 🪟 PHPStudy / XAMPP（Windows）
 
+#### 方式 A：一键启动（推荐 PHPStudy 用户）
+
+本仓库自带 **批处理脚本**，双击即可一键启动靶场，无需手动操作：
+
+| 脚本 | 功能 |
+|------|------|
+| `start_pikachu.bat` 🚀 | **一键启动** — 自动检测并启动 MySQL + Apache，打开浏览器访问靶场 |
+| `stop_pikachu.bat` 🛑 | **安全关闭** — 自动关闭 MySQL 和 Apache 服务 |
+
+**启动流程（`start_pikachu.bat`）：**
+```
+① 检查 MySQL 是否运行 → 未运行则自动启动
+② 检查 Apache 是否运行 → 未运行则自动启动
+③ 等待 5 秒服务就绪
+④ 显示服务状态（运行中/未启动）
+⑤ 自动打开浏览器进入 http://127.0.0.1/pikachu/
+```
+
+> ⚠️ 注意：脚本路径写死了 `D:\phpstudy_pro`，如果你的 PHPStudy 装在其他位置，需要手动修改脚本中的 `PHPSTUDY_ROOT` 路径。
+
+#### 方式 B：手动搭建
+
 1. 将 `pikachu` 文件夹放到 Web 根目录
 2. 修改 `inc/config.inc.php` 中的数据库连接配置
 3. 导入数据库：`mysql -u root -p < pikachu.sql`
 4. 访问 `http://127.0.0.1/pikachu/` → 点击"初始化安装"
-
-> 本仓库附带 `start_pikachu.bat` / `stop_pikachu.bat` 批处理脚本
-> （适用于 PHPStudy 环境，双击即用）
 
 ---
 
