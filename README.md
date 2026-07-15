@@ -72,9 +72,67 @@
 
 ---
 
+## 🚀 快速启动
+
+> 💡 **目标：下载即用，无需繁琐配置。** 以下 3 种方式任选其一。
+
+---
+
+### ⭐ 推荐：Docker（真正的开箱即用）
+
+**只需两步，3 分钟搞定：**
+
+```bash
+# 1️⃣ 下载
+git clone https://github.com/TrueFurina/pikachu.git
+cd pikachu
+
+# 2️⃣ 启动（首次会自动拉取镜像，之后秒开）
+docker compose up -d
+```
+
+浏览器访问 **http://127.0.0.1/pikachu/** → 点击"初始化安装" → 🎯 开练！
+
+> ✅ 不需要安装 PHP、MySQL、Apache  
+> ✅ 任何系统都能用（Windows / Mac / Linux）  
+> ✅ 不会影响你电脑上已有的环境  
+> ❌ 前提：需要先安装 [Docker Desktop](https://www.docker.com/products/docker-desktop/)（约 5 分钟）
+
+---
+
+### 🪟 Windows 已装 PHPStudy 的用户：双击 .bat 一键启动
+
+> **启动靶场不需要打开 PHPStudy 面板！** 脚本直接调用 Apache + MySQL 引擎，双击即用。
+> *（前提：已安装 PHPStudy，后续每次启动只需双击 .bat，无需再开面板）*
+
+| 脚本 | 功能 |
+|------|------|
+| `start_pikachu.bat` 🚀 | **一键启动** — 自动检测并启动 MySQL、Apache，打开浏览器进入靶场 |
+| `stop_pikachu.bat` 🛑 | **安全关闭** — 自动关闭 MySQL 和 Apache |
+
+```batch
+① 双击 start_pikachu.bat
+② 脚本自动启动 Apache + MySQL
+③ 浏览器自动打开 → http://127.0.0.1/pikachu/
+④ 首次访问 → 点击"初始化安装" → 开练！🎯
+```
+
+> ⚠️ 如果你的 PHPStudy 安装在**非 D 盘**，右键编辑 `start_pikachu.bat`，把第 12 行 `PHPSTUDY_ROOT` 改成你的实际路径。
+
+---
+
+### 🔧 手动搭建（PHPStudy / XAMPP / LNMP 通用）
+
+1. 把 `pikachu` 文件夹放到 Web 根目录
+2. 修改 `inc/config.inc.php` 中的数据库连接信息
+3. 导入数据库：`mysql -u root -p < pikachu.sql`
+4. 访问 `http://127.0.0.1/pikachu/` → 点击"初始化安装"
+
+---
+
 ## 👶 新手小白从零开始配置指南
 
-> 如果你是第一次接触靶场，连 PHPStudy 是什么都不知道，**按下面 6 步走，15 分钟搞定**。
+> 如果你连 Docker 和 PHPStudy 都没有，**按下面 6 步走，15 分钟搞定**。
 
 ### 📦 第一步：下载安装 PHPStudy
 
@@ -131,49 +189,6 @@ git clone https://github.com/TrueFurina/pikachu.git
 - 双击 `stop_pikachu.bat` 即可安全关闭 Apache 和 MySQL
 - 或者直接关掉黑色命令行窗口也行
 - **下次再用**：双击 `start_pikachu.bat` 就行了，不用重复前面的步骤
-
----
-
-## 🚀 快速启动
-
-### 🪟 Windows 用户：双击一键启动（最简单）
-
-> **启动靶场不需要打开 PHPStudy 面板！** 脚本直接调用 Apache + MySQL 引擎，双击即用。
-> *（第一次使用需要先安装 PHPStudy 来部署运行环境，后续每次启动只需双击 .bat 即可）*
-
-| 脚本 | 功能 |
-|------|------|
-| `start_pikachu.bat` 🚀 | **一键启动** — 自动检测并启动 MySQL、Apache，打开浏览器进入靶场 |
-| `stop_pikachu.bat` 🛑 | **安全关闭** — 自动关闭 MySQL 和 Apache |
-
-```batch
-① 双击 start_pikachu.bat
-② 脚本自动启动 Apache + MySQL
-③ 浏览器自动打开 → http://127.0.0.1/pikachu/
-④ 首次访问 → 点击"初始化安装" → 开练！🎯
-```
-
-> ⚠️ 如果你的 PHPStudy 安装在**非 D 盘**，右键编辑 `start_pikachu.bat`，把第 12 行 `PHPSTUDY_ROOT` 改成你的实际路径即可。
-
-### 🐳 Docker 用户：一行命令
-
-```bash
-# 方式一：Docker Compose（推荐）
-cd pikachu
-docker compose up -d
-
-# 方式二：直接运行
-docker run -d -p 8765:80 8023/pikachu-expect:latest
-```
-
-浏览器访问 **http://127.0.0.1/pikachu/**
-
-### 🔧 手动搭建（PHPStudy / XAMPP / LNMP）
-
-1. 把 `pikachu` 文件夹放到 Web 根目录
-2. 修改 `inc/config.inc.php` 中的数据库连接信息
-3. 导入数据库：`mysql -u root -p < pikachu.sql`
-4. 访问 `http://127.0.0.1/pikachu/` → 点击"初始化安装"
 
 ---
 
