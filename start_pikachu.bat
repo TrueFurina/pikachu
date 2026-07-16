@@ -1,4 +1,5 @@
 @echo off
+set PATH=C:\Windows\System32;%PATH%
 chcp 65001 >nul
 title Pikachu 靶场一键启动
 color 0A
@@ -14,7 +15,7 @@ set MYSQL_BIN=%PHPSTUDY_ROOT%\Extensions\MySQL5.7.26\bin\mysqld.exe
 set MYSQL_CFG=%PHPSTUDY_ROOT%\Extensions\MySQL5.7.26\my.ini
 set APACHE_BIN=%PHPSTUDY_ROOT%\Extensions\Apache2.4.39\bin\httpd.exe
 set APACHE_ROOT=%PHPSTUDY_ROOT%\Extensions\Apache2.4.39
-set PIKACHU_URL=http://127.0.0.1/pikachu/
+set PIKACHU_URL=http://127.0.0.1:8885/
 
 :: ===== 检查 PHPStudy 路径是否存在 =====
 if not exist "%PHPSTUDY_ROOT%" (
@@ -103,7 +104,7 @@ if %MYSQL_OK%==1 if %APACHE_OK%==1 (
     echo 📍 靶场路径：%PHPSTUDY_ROOT%\WWW\pikachu
     echo 📍 MySQL配置：root / root，端口 3306，数据库 pikachu
     echo.
-    echo 💡 首次使用请访问 http://127.0.0.1/pikachu/install.php 初始化数据库
+    echo 💡 首次使用请访问 http://127.0.0.1:8885/install.php 初始化数据库
 ) else (
     echo ❌ 部分服务启动失败，请检查上方状态。
     echo   可尝试以管理员身份运行本脚本。
