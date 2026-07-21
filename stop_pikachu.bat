@@ -1,4 +1,5 @@
 @echo off
+set PATH=C:\Windows\System32;%PATH%
 rem chcp 65001 >nul
 title Pikachu °Ð³¡ - Í£Ö¹·þÎñ
 color 0C
