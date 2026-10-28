@@ -1,0 +1,20 @@
+Pikachu（定制版）
+Copyright (c) 2026 TrueFurina
+
+This product is a modified derivative of Pikachu 漏洞测试平台:
+    https://github.com/zhuifengshaonianhanlu/pikachu
+    Copyright (c) zhuifengshaonianhanlu
+    Licensed under the Apache License, Version 2.0
+
+本仓库为上述上游项目的二次定制版本。上游原始代码、静态资源
+（assets/、pkxss/ 等）之版权与许可归原作者所有，按 Apache-2.0 保留；
+本仓库的定制部分（Docker Compose、Windows 一键启动脚本、数据库自动初始化等）
+同样以 Apache-2.0 授权发布。
+
+Changes made from the upstream project (2026):
+  - 新增 docker/ 与 docker-compose 一键启动
+  - 新增 Windows 一键启动脚本与 PHPStudy 联动
+  - 新增数据库首次访问自动初始化引导
+  - 目录结构与默认配置调整
+
+Apache-2.0 full text: see LICENSE
