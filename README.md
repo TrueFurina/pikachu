@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/MySQL-5.7-blue?logo=mysql" alt="MySQL"/>
     <img src="https://img.shields.io/badge/Docker-支持-brightgreen?logo=docker" alt="Docker"/>
     <img src="https://img.shields.io/badge/Windows-一键启动-yellow?logo=windows" alt="Windows"/>
-    <img src="https://img.shields.io/badge/license-MIT-green" alt="License"/>
+    <img src="https://img.shields.io/badge/license-Apache_2.0-blue" alt="License"/>
   </p>
   <p>
     <a href="#-快速启动"><b>🚀 快速启动</b></a> •
@@ -31,6 +31,8 @@
 > ✅ 提供 **Windows 一键启动脚本**（已装 PHPStudy 的用户双击即用）  
 > ✅ 优化数据库配置，首次访问自动引导安装
 
+本仓库是 [zhuifengshaonianhanlu/pikachu](https://github.com/zhuifengshaonianhanlu/pikachu)（Apache-2.0）的**二次定制版本**，上游原始代码与素材的版权归原作者所有；定制部分的授权与改动说明见 [NOTICE](NOTICE) 与 [LICENSE](LICENSE)。
+
 如果你刚开始学 Web 安全、准备渗透测试面试、或者需要一个稳定的漏洞练习环境，这个项目就是为你准备的。
 
 ---
@@ -43,7 +45,7 @@
 | 🪟 Windows 双击 .bat 启动 | ✅ **支持**（需先装 PHPStudy） | ❌ 需手动配环境 |
 | 🖱️ 启动无需打开 PHPStudy 面板 | ✅ 双击 .bat 即可 | ❌ 每次需手动操作面板 |
 | 🔧 数据库首次访问自动初始化 | ✅ 自动引导安装 | ❌ 需手动改 config + 导 SQL |
-| 🆓 完全免费开源 | ✅ MIT 协议 | ✅ 同 |
+| 🆓 完全免费开源 | ✅ Apache-2.0 协议 | ✅ 同 |
 
 ---
 
@@ -271,7 +273,8 @@ pikachu/
 
 ## 📄 许可证
 
-本项目基于 **MIT 许可证** 开源，详见 [LICENSE](LICENSE) 文件。
+本项目基于 **Apache License 2.0** 开源，详见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。
+上游项目：[zhuifengshaonianhanlu/pikachu](https://github.com/zhuifengshaonianhanlu/pikachu)（Apache-2.0），本仓库的改动清单见 NOTICE。
 
 ---
 
@@ -287,12 +290,3 @@ pikachu/
 </div>
 
 ---
-
-## License & Usage Notice
-
-**Source-Available · All Rights Reserved**
-
-This project is source-available and all rights are reserved by the author. The code is provided for **viewing and evaluation purposes only** — access does not grant any right to copy, modify, redistribute, use commercially, or create derivative works. Unauthorized reuse may carry legal risk. Contact the author for explicit written permission before any other use.
-
-**本仓库为「源码可查、权利保留」项目（source-available / all-rights-reserved）。代码仅供查看与评估，未授权任何复制、再分发、修改、商用或衍生创作。擅自借用代码存在法律风险；如有需要请先联系作者获取明确书面许可。**
-
